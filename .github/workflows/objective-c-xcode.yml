@@ -16,3 +16,5 @@ jobs:
         uses: actions/checkout@v4
       - name: Set up
         run: brew install danger/tap/danger-swift
+      - name: Set up
+        run: danger-swift ci
