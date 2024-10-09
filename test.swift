@@ -1,10 +1,13 @@
 //: A UIKit based Playground for presenting user interface
-
+// bbbb
+// aaaa
+// aaaa
 import UIKit
 import PlaygroundSupport
 // ここの部分は自動で作成されます
 class MyViewController : UIViewController {
   override func loadView() {
+    var a = 0
     let view = UIView()
     // 画面の背景色（白）
     view.backgroundColor = .white
