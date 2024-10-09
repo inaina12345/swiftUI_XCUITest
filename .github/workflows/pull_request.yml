@@ -1,8 +1,7 @@
-name: Xcode - Build and Analyze
+name: Xcode - pull request action
 
 on:
   pull_request:
-    branches: [ "main" ]
 
 jobs:
   build:
@@ -12,6 +11,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set Default Scheme
+      - name: Build time summary
         run: |
-         xcodebuild test -scheme swiftUI_XCUITest "platform=iOS,name=iPhone 15" -only-testing:swiftUI_XCUITestTests/aaa_test
+         xcodebuild 
+          -project swiftUI_XCUITest.xcodeproj 
+          -scheme swiftUI_XCUITest build 
+          -destination platform="iOS Simulator,name=iPhone 15" 
+          OTHER_SWIFT_FLAGS="-Xfrontend -warn-long-function-bodies=100" 
+          -showBuildTimingSummary | tee build.log         
