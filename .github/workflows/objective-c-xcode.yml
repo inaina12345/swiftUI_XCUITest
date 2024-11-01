@@ -17,8 +17,9 @@ jobs:
         uses: actions/checkout@v4
       - name: Set up
         run: |
-         git clone https://github.com/danger/danger.git
-         cd danger
-         bundle install
          bundle exec rake spec
+#         git clone https://github.com/danger/danger.git
+#         cd danger
+#         bundle install
+         
     
