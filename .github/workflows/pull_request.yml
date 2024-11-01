@@ -6,17 +6,11 @@ on:
 jobs:
   build:
     name: Build and XCTest
-    runs-on: macos-14
+    runs-on: self-hosted 
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Build time summary
         run: |
-         xcodebuild -project swiftUI_XCUITest.xcodeproj
-         -scheme swiftUI_XCUITest build
-         CODE_SIGNING_REQUIRED=NO \
-         CODE_SIGNING_ALLOWED=NO \
-         -allowProvisioningUpdates
-         -destination platform="iOS Simulator,name=iPhone 15"
-         OTHER_SWIFT_FLAGS="-Xfrontend -warn-long-function-bodies=100" -showBuildTimingSummary | tee build.log
+         xcodebuild -project swiftUI_XCUITest.xcodeproj -scheme swiftUI_XCUITest build -destination "id=00008101-001E70A42199001E"         
