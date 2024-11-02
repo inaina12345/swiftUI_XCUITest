@@ -15,7 +15,7 @@ jobs:
         run: |
          xcodebuild build -project swiftUI_XCUITest.xcodeproj -scheme swiftUI_XCUITest -destination "id=B7C1A209-ACF8-4012-BB21-14B7CDBD3808"
       - name: xcodebuild test
-        run: |
+        run:
          xcodebuild test 
          -project swiftUI_XCUITest.xcodeproj 
          -scheme swiftUI_XCUITestUnitTests 
