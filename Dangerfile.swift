@@ -3,8 +3,8 @@
 import Danger
 import DangerXCodeSummary // package: https://github.com/f-meloni/danger-swift-xcodesummary.git
 
-let summary = XCodeSummary(filePath: "result.json")
-summary.report()
+//let summary = XCodeSummary(filePath: "result.json")
+//summary.report()
 
 let danger = Danger()
 // テストカバレッジを確認
