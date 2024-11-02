@@ -14,4 +14,9 @@ jobs:
       - name: Danger CI Test
         run: |
          xcodebuild build -project swiftUI_XCUITest.xcodeproj -scheme swiftUI_XCUITest -destination "id=B7C1A209-ACF8-4012-BB21-14B7CDBD3808"
-         danger-swift ci
+#         danger-swift ci
+
+      - name: Danger JS
+        uses: danger/danger-js@X.Y.Z
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
