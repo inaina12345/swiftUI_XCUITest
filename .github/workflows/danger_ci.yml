@@ -5,7 +5,7 @@ on:
 
 jobs:
   build:
-    name: Build and XCTest
+    name: Danger CI Test
     runs-on: self-hosted 
 
     steps:
@@ -14,6 +14,13 @@ jobs:
       - name: xcodebuild
         run: |
          xcodebuild build -project swiftUI_XCUITest.xcodeproj -scheme swiftUI_XCUITest -destination "id=B7C1A209-ACF8-4012-BB21-14B7CDBD3808"
+      - name: xcodebuild test
+        run: |
+         xcodebuild test 
+         -project swiftUI_XCUITest.xcodeproj 
+         -scheme swiftUI_XCUITestUnitTests 
+         -destination "id=B7C1A209-ACF8-4012-BB21-14B7CDBD3808" 
+         -resultBundlePath test_output/ResultBundle.xcresult
       - name: Danger CI Test
         env:
          DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
