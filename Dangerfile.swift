@@ -3,9 +3,6 @@
 import Danger
 import DangerXCodeSummary // package: https://github.com/f-meloni/danger-swift-xcodesummary.git
 
-//let summary = XCodeSummary(filePath: "result.json")
-//summary.report()
-
 let danger = Danger()
 // テストカバレッジを確認
 //import DangerSwiftCoverage // package: https://github.com/f-meloni/danger-swift-coverage.git
@@ -26,8 +23,11 @@ danger.warn("修正量が多すぎです。PR を小さく分割してくださ�
 
 
 // You can use these functions to send feedback:
-message("Highlight something in the table")
-warn("Something pretty bad, but not important enough to fail the build")
-fail("Something that must be changed")
+//message("Highlight something in the table")
+//warn("Something pretty bad, but not important enough to fail the build")
+//fail("Something that must be changed")
 
-markdown("Free-form markdown that goes under the table, so you can do whatever.")
+//markdown("Free-form markdown that goes under the table, so you can do whatever.")
+
+let summary = XCodeSummary(filePath: "result.json")
+summary.report()
