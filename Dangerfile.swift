@@ -29,5 +29,7 @@ danger.warn("修正量が多すぎです。PR を小さく分割してくださ�
 
 //markdown("Free-form markdown that goes under the table, so you can do whatever.")
 
-let summary = XCodeSummary(filePath: "result.json")
-summary.report()
+//let summary = XCodeSummary(filePath: "result.json")
+// Xcode summary warnings check.
+XCodeSummary(filePath: "result.json", onlyShowSummaryInDiffFiles: true).report()
+//summary.report()
