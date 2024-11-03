@@ -2,21 +2,24 @@ name: Xcode - Build and Analyze
 
 on:
    workflow_dispatch:
-#  push:
+   push:
+     pull_request:
 #    branches: [ "main" ]
 
 jobs:
   build:
     name: Build and analyse default scheme using xcodebuild command
-    runs-on: macos-14
+    #runs-on: macos-14
+    runs-on: self-hosted 
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set up
         run: |
-         git clone https://github.com/danger/danger.git
-         cd danger
-         bundle install
          bundle exec rake spec
+#         git clone https://github.com/danger/danger.git
+#         cd danger
+#         bundle install
+         
     
