@@ -6,12 +6,14 @@
 //
 
 import XCTest
-@testable import swiftUI_XCUITest
 
 final class swiftUI_XCUITestTests: XCTestCase {
 
-    func aaa_test() {
-        let detail = DetailView()
-        XCTAssert(detail.get_sample_test() == 1)
+    func testContentViewText() throws {
+        let app = XCUIApplication()
+        app.launch()
+
+        let helloText = app.staticTexts["Hello, world!"]
+        XCTAssertTrue(helloText.exists)
     }
 }
