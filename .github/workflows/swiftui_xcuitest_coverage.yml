@@ -19,6 +19,9 @@ jobs:
         run: |
           xcodebuild test -project swiftUI_XCUITest.xcodeproj -scheme swiftUI_XCUITest -destination 'platform=iOS Simulator,name=iPhone 15 Pro' CODE_COVERAGE=YES -resultBundlePath ./result.xcresult
 
+      - name: Install lcov
+        run: brew install lcov
+
       - name: Generate Coverage Report
         run: |
           xcrun llvm-cov export -format=lcov -instr-profile swiftUI_XCUITest.xcodeproj/swiftUI_XCUITest.xctestrun -dump-coverage ./result.xcresult | lcov --quiet --no-external --directory . --capture --output-file coverage.info
