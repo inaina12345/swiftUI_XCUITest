@@ -8,7 +8,8 @@ on:
 jobs:
   build:
     name: Build and analyse default scheme using xcodebuild command
-    runs-on: macos-14
+ #   runs-on: macos-14
+    runs-on: self-hosted
 
     steps:
       - name: Checkout
