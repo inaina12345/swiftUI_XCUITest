@@ -5,13 +5,36 @@ on:
 
 jobs:
   build:
-    name: Build and XCTest
+    name: Danger CI Test
     runs-on: self-hosted 
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Danger CI Test
+      - name: xcodebuild
         run: |
          xcodebuild build -project swiftUI_XCUITest.xcodeproj -scheme swiftUI_XCUITest -destination "id=B7C1A209-ACF8-4012-BB21-14B7CDBD3808"
+      - name: xcodebuild test
+        run:
+         xcodebuild test 
+         -project swiftUI_XCUITest.xcodeproj 
+         -scheme swiftUI_XCUITestTests 
+         -destination "id=B7C1A209-ACF8-4012-BB21-14B7CDBD3808" 
+         -resultBundlePath test_output/ResultBundle.xcresult
+      - name: xcrun xcresulttool get
+        run:
+         xcrun xcresulttool get
+         --path test_output/ResultBundle.xcresult
+         --format json --legacy flag > ressult.json 
+      - name: Danger CI Test
+        env:
+         DANGER_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+         brew install danger/tap/danger-swift
+         # Run danger
          danger-swift ci
+
+      #- name: Danger JS
+      #  uses: danger/danger-js@X.Y.Z
+      #  env:
+      #    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
